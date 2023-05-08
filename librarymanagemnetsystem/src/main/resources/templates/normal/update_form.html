@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+     th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>This is home page</title>
+</head>
+<body>
+     <section>
+     <div class="card text-center mr-3 ml-3 ">
+   <div class="card-body ">
+   <h1 class="text-center">Update Your Books</h1>
+   <div class="container-fluid mt-1">
+   <div class="row">
+   <div class="col-md-8 offset-md-2">
+     <form action="#"
+              th:object="${book}"
+              enctype="multipart/form-data"
+              method="POST"
+              th:action="@{/process-update}"
+              class="mt-2"
+     
+     >
+     <input type="hidden" th:value="${book.bookid}"name="bookid"/>
+     <!-- Book name -->
+     <div class="input-group">
+       <div class="input-group-prepend">
+          <div class="input-group-text mr-3">
+          <i class="fa fa-plus"></i>
+          </div>
+     </div>
+         <input th:value="${book.bookname}" required type="text" id="BookName" name="bookname"placeholder="Enter Book Name" class="form-control" height="50px" width=100px/>
+     </div>
+     <!-- Author -->
+     <div class="input-group mt-3">
+       <div class="input-group-prepend">
+          <div class="input-group-text mr-3">
+          <i class="fas fa-user-alt"></i>
+          </div>
+     </div>
+         <input th:value="${book.author}" required type="text" id="author" name="author"placeholder="Enter Author Name" class="form-control"/>
+     </div>
+     <!-- Publisher -->
+     <div class="input-group mt-3">
+       <div class="input-group-prepend">
+          <div class="input-group-text mr-3">
+          <i class="fas fa-user-alt"></i>
+          </div>
+     </div>
+         <input th:value="${book.publisher}"  required type="text" id="Publisher" name="publisher"placeholder="Enter publisher Name" class="form-control"/>
+         
+     </div>
+     <div class="container text-center ">
+     <button type="Save" class="btn bg-primary btn-block text-white"> Save </button> <button type="Reset" class="btn btn-warning btn-block "> Reset </button>
+     
+     
+     </div>
+     
+     </form>
+   </div>
+   
+   </div>
+   </div>
+   </div>
+   
+   </div>
+     </section>
+
+
+</body>
+</html>

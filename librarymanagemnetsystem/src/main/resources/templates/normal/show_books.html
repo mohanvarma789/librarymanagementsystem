@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+     th:replace="~{base::layout(~{::section})}">
+
+         
+<head>
+<meta charset="UTF-8">
+<title>this is home page</title>
+</head>
+<body>
+    <section>
+      <div class="card mr-3 ml-3">
+      <div class="card-body">
+      <h1 class="text-center">Your Books</h1>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Bookid</th>
+      <th scope="col">Bookname</th>
+      <th scope="col">Author</th>
+      <th scope="col">Publisher</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="c:${book}">
+      <th scope="row"th:text="${'LMS2023'+c.bookid}">1</th>
+      <td th:text="${c.bookname}">Mark</td>
+      <td th:text="${c.author}">Otto</td>
+      <td th:text="${c.publisher}">@mdo</td>
+      <td>
+      <a th:href="@{'/delete/'+${c.bookid}}" class="btn btn-danger btn-sm">Delete</a>
+      <form method="post" th:action="@{'/update-book/'+${c.bookid}}" class="mt-2">
+            <button type="submit" class="btn btn-primary btn-sm">Update</button>
+      
+      </form>
+      
+      </td>
+    </tr>
+   
+   
+  </tbody>
+</table>
+      </div>
+      </div>
+
+    </section>
+
+</body>
+</html>
